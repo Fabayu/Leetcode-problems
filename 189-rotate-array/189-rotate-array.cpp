@@ -5,5 +5,6 @@ public:
         reverse(nums.begin(),nums.begin()+k%nums.size());
         reverse(nums.begin()+k%nums.size(),nums.end());
         
+        
     }
 };
