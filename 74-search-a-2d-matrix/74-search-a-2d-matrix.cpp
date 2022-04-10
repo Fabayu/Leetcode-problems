@@ -7,7 +7,6 @@ public:
         int j=col_size-1;
         while(i < row_size &&j>-1){
             int cur=matrix[i][j];
-            
             if(target==cur)return true;
             if(target>cur)i++;
             else j--;
