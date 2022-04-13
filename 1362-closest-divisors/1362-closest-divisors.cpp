@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<int> closestDivisors(int num) {
+       for(int i=sqrt(num+2);i>=1;i--){
+            if((num+1)%i==0) return {i,{(num+1)/i}} ;
+           if((num+2)%i==0) return {i,{(num+2)/i}};
+          
+                                        
+       }
+     return {-1,-1};
+    }
+};
+        //                                 for (int i = sqrt(num + 2); i >= 1; --i){
+        //     if ((num + 1) % i == 0) return {(num + 1) / i, i};
+        //     if ((num + 2) % i == 0) return {(num + 2) / i, i};
+        // }
+        // return {-1, -1};
