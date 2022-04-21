@@ -50,11 +50,11 @@ public:
     
         for (int i = 0; i < num.size(); i++) {
         
-            int target_3 = target - num[i];
+          
         
             for (int j = i + 1; j < num.size(); j++) {
             
-                int target_2 = target_3 - num[j];
+                int target_2 = target- num[j]- num[i];
             
                 int front = j + 1;
                 int back = num.size() - 1;
