@@ -11,11 +11,11 @@ class Solution {
         int cnt;
         
         while(n>0){
-           if((n&1)>0)cnt++;
-               
-               
-            n=n>>1;
-           
+           if((n&1)>0){
+               cnt++;}
+           n=n>>1;       
+            
+            
         }
         
         return cnt;
