@@ -2,6 +2,7 @@ class Solution {
 public:
     int search(vector<int>& nums, int target) {
        int lo=0;
+        
         int hi=nums.size()-1;
         while(lo<hi){
             int mid=lo+(hi-lo)/2;
@@ -14,7 +15,7 @@ public:
         }
         
         
-        int piv=lo;
+        int piv=hi;
         int left=0;
         int right=nums.size()-1;
         if(target>=nums[piv]&&target<=nums[right]){
