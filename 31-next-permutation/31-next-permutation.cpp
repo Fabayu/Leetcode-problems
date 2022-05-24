@@ -12,7 +12,8 @@ public:
         }
     	if (k < 0) {
     	    reverse(nums.begin(), nums.end());
-    	} else {
+    	} 
+        else {
     	    for (l = n - 1; l > k; l--) {
                 if (nums[l] > nums[k]) {
                     break;
