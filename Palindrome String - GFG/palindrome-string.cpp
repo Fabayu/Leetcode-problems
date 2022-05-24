@@ -12,20 +12,31 @@ public:
 	
 	int isPalindrome(string S)
 	{
-	   string rev=S;
-	   reverse(S.begin(),S.end());
-	   if(rev==S){
-	       return 1;
-	   }
-	   else{
-	       return 0;
-	   }
-	   // Your code goes here))
-	   
-	   
+	 for(int i=0;i<S.size()/2;i++)
+	 {
+	     if(S[i]!=S[S.size()-i-1]){
+	         return 0;
+	     }
+	     
+	 }
+	
+	return 1;
 	}
 
 };
+
+
+	   //string rev=S;
+	   //reverse(S.begin(),S.end());
+	   //if(rev==S){
+	   //    return 1;
+	   //}
+	   //else{
+	   //    return 0;
+	   //}
+	   //// Your code goes here))
+	   
+
 
 // { Driver Code Starts.
 
