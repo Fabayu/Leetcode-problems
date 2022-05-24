@@ -30,15 +30,18 @@ int main() {
 //User function Template for C++
 
 string reverseWord(string str){
+    int  size=str.size();
     
-    
-    
-    string reversed="";
-    for(int i=str.size()-1;i>=0;i--){
-        reversed+=str[i];
+        string reversed="";
+    for(int i=0;i<size/2;i++){
+        swap(str[i],str[size-i-1]);
     }
-   return reversed;
+   return str;
    }
+   
+   
+    
+   
    
    
 
@@ -46,6 +49,17 @@ string reverseWord(string str){
     
     
     
+//         string reversed="";
+//     for(int i=str.size()-1;i>=0;i--){
+//         reversed+=str[i];
+//     }
+//   return reversed;
+//   }
+   
+   
+
+    
+
     
     
     
