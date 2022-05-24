@@ -29,9 +29,17 @@ int main() {
 
 //User function Template for C++
 
+string reversing(string str){
+    if(str.size()==0){
+        return str;
+    }
+    return (reversing(str.substr(1,str.size()))+str[0]);    
+    }
+
+
 string reverseWord(string str){
-reverse(str.begin(),str.end());
-return str;
+return reversing(str);
+
 }
 
 
@@ -44,7 +52,8 @@ return str;
 
 
 
-
+// reverse(str.begin(),str.end());
+// return str;
 
 
 
