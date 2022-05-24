@@ -29,37 +29,77 @@ int main() {
 
 //User function Template for C++
 
-string reversing(string str){
-    if(str.size()==0){
-        return str;
-    }
-    return (reversing(str.substr(1,str.size()))+str[0]);    
-    }
-
-
 string reverseWord(string str){
-return reversing(str);
+    
+    
+    
+    string reversed="";
+    for(int i=str.size()-1;i>=0;i--){
+        reversed+=str[i];
+    }
+   return reversed;
+   }
+   
+   
 
-}
+    
+    
+    
+    
+    
+    
+    
+//     if(str.size()==0){
+//         return str;
+//     }
+//     return (reversing(str.substr(1,str.size()))+str[0]);    
+//     }
+
+
+// string reverseWord(string str){
+// return reversing(str);
+
+
+
+
+///Using Recursion
 
 
 
 
 
 
+// string reversing(string str){
+//     if(str.size()==0){
+//         return str;
+//     }
+//     return (reversing(str.substr(1,str.size()))+str[0]);    
+//     }
+
+
+// string reverseWord(string str){
+// return reversing(str);
+
+// }
 
 
 
-
+///using reverse inbuilt
 
 // reverse(str.begin(),str.end());
 // return str;
 
 
 
-//     int size=str.size();
+
+///
+
+
+// int size=str.size();
 //       for(int i=0;i<size/2;i++){
 //   swap(str[i],str[size-i-1]);
 //     }
 //     return str;
   
+
+
