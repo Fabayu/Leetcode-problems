@@ -1,45 +1,69 @@
 class Solution {
-public:
+public:/*
+*/
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        vector<int>res;
-        if(matrix.size()==0){
-            return res;
-        }
+        vector<int> res;
+        if(matrix.size()==0) return res;
+        int minrow=0;
+         
         
-        
-        int rowbeg=0;
-        int rowend=matrix.size()-1;
-        int colbeg=0;
-        int colend=matrix[0].size()-1;
-        while(rowbeg<=rowend&&colbeg<=colend){
-            for(int i=colbeg;i<=colend;i++){
-              res.push_back(matrix[rowbeg][i]);
+        int maxrow=matrix.size()-1;
+        int maxcol=matrix[0].size()-1;
+        int mincol=0;
+        while(minrow<=maxrow&&mincol<=maxcol){
+           
+            for(int i=mincol;i<=maxcol;i++){
+                res.push_back(matrix[minrow][i]);
                 
             }
-          rowbeg++;
-            for(int i=rowbeg;i<=rowend;i++){
-                res.push_back(matrix[i][colend]);
-                
-            }
-            colend--;
-            if(rowbeg<=rowend){
-                for(int i=colend;i>=colbeg;i--){
-                    res.push_back(matrix[rowend][i]);
-                    
-                }
-                
-            }
-            rowend--;
-                
-                if(colbeg<=colend)
-                {
-                    for(int i=rowend;i>=rowbeg;i--){
-                        res.push_back(matrix[i][colbeg]);
-                    }
-                } 
+            minrow++;
             
-            colbeg++;
+            
+            for(int i=minrow;i<=maxrow;i++){
+                res.push_back(matrix[i][maxcol]);
             }
+            maxcol--;
+            
+            if(minrow<=maxrow){
+                for(int i=maxcol;i>=mincol;i--){
+                    res.push_back(matrix[maxrow][i]);
+                }
+            }
+                maxrow--;
+                
+                if(mincol<=maxcol){
+                    for(int i=maxrow;i>=minrow;i--){
+                        res.push_back(matrix[i][mincol]);
+                    }
+                }
+                            
+            mincol++;
+            }
+            
+        
         return res;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     colmin-->           --<colmax 
+    
+// rowmin!    
+        
+        
+// rowmax^        
