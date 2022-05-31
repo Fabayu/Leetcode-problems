@@ -9,12 +9,12 @@ using namespace std;
 class Solution{
   public:
     int minJumps(int arr[], int n){
-       if(n<-1){
-           return -1;
-       }
-       if(n==1&&arr[0]==0){
-           return 0;
-       }
+      if(n<-1){
+          return -1;
+      }
+      if(n==1&&arr[0]==0){
+          return 0;
+      }
       if(arr[0]==0&&n!=1){
           return -1;
       }
@@ -32,7 +32,7 @@ class Solution{
           stairs--;
           
           
-           if(stairs==0){
+          if(stairs==0){
              jump++;
              if(level>=ladder)
   return -1;
@@ -40,7 +40,7 @@ class Solution{
              stairs=ladder-level;
           }
       }
-       if( jump==1){
+      if( jump==1){
             return -1;
         }
         else{
@@ -60,7 +60,7 @@ class Solution{
         
         
         
-        // Your code here
+       // Your code here
     }
 };
 
