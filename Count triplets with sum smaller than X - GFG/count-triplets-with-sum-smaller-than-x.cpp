@@ -10,25 +10,19 @@ class Solution{
 	long long countTriplets(long long arr[], int n, long long sum)
 	{
 	    
-	    
-	    int trip_cnt= 0 ;
+	   int trip_cnt= 0 ;
        sort(arr,arr+n);
        for(int i = 0 ; i < n ; i++)
-       {
-           if(arr[i] < sum)
-           {
-               int j  =  i+1 ; int k = n-1;
-               while(j < k)
-               {
-                  if(sum > arr[i] + arr[j] + arr[k])
+       {  if(arr[i] < sum)
+           { int j  =  i+1 ; int k = n-1;
+              while(j < k)
+               {if(sum > arr[i] + arr[j] + arr[k])
                   {
-                      trip_cnt = trip_cnt + (k - j);
+                      trip_cnt += (k - j);
                       j++;
                   }
                   else k--;
-               }
-           }
-       }
+               }}}
        return trip_cnt;
 	    
 	    
