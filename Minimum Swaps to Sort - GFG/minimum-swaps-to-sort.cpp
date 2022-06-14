@@ -27,10 +27,11 @@ class Solution
 	  sort(nums.begin(),nums.end());
 	  for(int j=0;j<n;j++)
 	  {
-	      while(m[nums[j]]!=j)
+	      if(m[nums[j]]!=j)
 	      {
 	          c++;
 	          swap(nums[j],nums[m[nums[j]]]);
+	          j--;
 	      }
 	  }
 	  return c;
