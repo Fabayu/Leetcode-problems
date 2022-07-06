@@ -4,13 +4,13 @@ public:
      if(n<2){
          return n;
      }
-     int a=0,b=1,c=a+b;
+     int teri=0,meri=1,yadein=teri+meri;
         for(int i=2;i<n;i++){
-            a=b;
-            b=c;
-            c=a+b;
+            teri=meri;
+            meri=yadein;
+            yadein=teri+meri;
             
         }
-        return c;
+        return yadein;
     }
 };
