@@ -1,35 +1,40 @@
+
+  
+    #define ll long long
+ll dp[105][25][105];
+ll solve(vector<int>& houses,ll index,vector<vector<int>>& cost,ll prev,ll m,ll n,ll target)
+{
+    if(target<0)              // If target index neg h to
+        return INT_MAX;
+    if(index == m)      // sare
+    {
+        if(target == 0)       // If neighbours are same h to.
+            return 0;
+        return INT_MAX;     // valid?
+    }
+    if(dp[index][prev][target] != -1)
+        return dp[index][prev][target];
+    if(houses[index] != 0)       // If house is already coloured.
+    {
+        return dp[index][prev][target] = solve(houses,index+1,cost,houses[index],m,n,target-(prev!=houses[index]));
+    }
+    ll ans = INT_MAX;         // nhi krna 
+    for(int i=1;i<=n;i++)
+    {
+        ans = min(ans,cost[index][i-1]+solve(houses,index+1,cost,i,m,n,target-(prev!=i)));
+    }
+    return dp[index][prev][target] = ans;
+}
 class Solution {
 public:
     int minCost(vector<int>& houses, vector<vector<int>>& cost, int m, int n, int target) {
-        const int INF = 1e9;
-        vector<vector<int>> dp(target + 1, vector<int> (n, INF));
-        if (houses[0] == 0) {
-            dp[1] = cost[0];
-        } else {
-            dp[1][houses[0] - 1] = 0;
-        }
-        
-        for (int i = 1; i < m; i++) {
-            for (int groups = target; groups > 0; groups--) {
-                for (int color1 = 0; color1 < n; color1++) {
-                    int min_cost = dp[groups][color1];
-                    dp[groups][color1] = INF;
-                    if (houses[i] != 0 && houses[i] != color1 + 1) continue;
-                    int c = (houses[i] == 0) ? cost[i][color1] : 0;
-                    min_cost += c;
-                    for (int color2 = 0; color2 < n; color2++) {
-                        if (color1 == color2) continue;
-                        min_cost = min(min_cost, dp[groups - 1][color2] + c);
-                    }
-                    dp[groups][color1] = min_cost;
-                }
-            }
-        }
-        
-        int ans = INF;
-        for (int color = 0; color < n; color++) {
-            ans = min(ans, dp[target][color]);
-        }
-        return (ans < INF ? ans : -1);
+	  // memset dp with -1.
+        memset(dp,-1,sizeof(dp));
+		// Calculate answer using recursive dp.
+        ll ans = solve(houses,0,cost,n+1,m,n,target);
+        if(ans == INT_MAX) //  comes out to be INT_MAX
+            return -1;
+        return ans;
     }
+
 };
