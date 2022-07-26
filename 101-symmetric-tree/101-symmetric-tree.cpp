@@ -9,34 +9,39 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+/*  // r1->left is 3 and r2->right = 3
+        // Both values are same , they will by pass both if and else if statement
+        // Now again r1->left is null and r2->right is null
+        
+        
+        // so true will be returned to caller, and thus tree is mirror of itself.
+    */
 class Solution {
 public:
-bool isSymmetric(TreeNode *root) {
-        TreeNode *left, *right;
-        if (!root)
+    
+
+         bool solve(TreeNode* left,TreeNode* right){
+        if(left==NULL && right==NULL)
             return true;
         
-        queue<TreeNode*> q1, q2;
-        q1.push(root->left);
-        q2.push(root->right);
-        while (!q1.empty() && !q2.empty()){
-            left = q1.front();
-            q1.pop();
-            right = q2.front();
-            q2.pop();
-            if (NULL == left && NULL == right)
-                continue;
-            if (NULL == left || NULL == right)
-                return false;
-            if (left->val != right->val)
-                return false;
-            q1.push(left->left);
-            q1.push(left->right);
-            q2.push(right->right);
-            q2.push(right->left);
-        }
-        return true;
+        if((left==NULL && right!=NULL) || (left!=NULL && right==NULL) || (left->val!=right->val))
+            return false;
+        //  will return true from first if condtion
+        // Now the scene is : we have executed first solve() before && and it has
+        // returned us True so expression becomes ' return true && solve() '
+        // solve after && will execute 
+        return solve(left->left,right->right) && solve(left->right,right->left);
+        
+    }
     
- 
+    bool isSymmetric(TreeNode* root) {
+        
+        // Similarly it will check for 4 and 4 
+        // next time both will become null, so will return true
+        //  solve() at the end will also hold true
+        //  we know 'true && true' is true
+        return solve(root->left,root->right);
     }
 };
