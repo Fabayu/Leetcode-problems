@@ -1,16 +1,14 @@
 class Solution {
 public:
     int fib(int n) {
-     if(n<2){
-         return n;
-     }
-     int teri=0,meri=1,yadein=teri+meri;
-        for(int i=2;i<n;i++){
-            teri=meri;
-            meri=yadein;
-            yadein=teri+meri;
+vector<int> dp(n+1);
+        if(n==0)return 0;
+        dp[0]=0;
+        dp[1]=1;
+        for(int i=2;i<=n;i++){
+            dp[i]=dp[i-2]+dp[i-1];
             
         }
-        return yadein;
+        return dp[n];
     }
 };
