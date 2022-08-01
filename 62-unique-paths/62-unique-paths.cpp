@@ -1,25 +1,23 @@
+/*Approach: So, we only need to choose number of ways of picking right from the total steps or number of ways of choosing down from the total steps. Which is nothing but (total) C (right) or (total) C (down).
+*/
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        vector<int>prev(n, 0);
-        for(int i = m-1; i>=0; i--){
-            vector<int>curr(n, 0);
-            for(int j = n-1; j>=0; j--){
-                if(i == m-1 || j == n-1){
-                    //dp[i][j] = 1;
-                    curr[j] = 1;
-                }else{
-                    // dp[i][j] = dp[i+1][j] + dp[i][j+1];
-                    int down = 0, right = 0;
-                    if(j<n) right = curr[j+1];
-                    if(i<m) down = prev[j];
-                    curr[j] = right + down;
-                }
-            }
-            prev = curr;
+        int N = n+m-2;
+        int r = min(n,m) - 1;
+        double res = 1;
+        for(int i=1; i<=r; ++i, N--){   
+            res = res * (N) / i;
         }
-    // return dp[0][0]; 
-        return prev[0];
+        
+        return (int)res;
     }
-
 };
+
+
+/*A combinatorics problem 
+
+ observe it care fully, our robot has to move n-1 steps right and m-1 steps down in any order to reach the right bottom of the grid. You will understand this more with the following example.
+
+Example: We had 3x7 grid, robot needs to take (3-1) = 2 steps down overall and 7-1 = 6 steps right overall to reach the bottom right of the grid. This is a total of 8 steps. And the ordering doesn't matter like: D D R R R R R R or D R D R R R R R or R R R R R R D D will all do the job, and all of this is noting but the permutation of total steps. So this is nothing but number of ways of choose D in the 8 blanks or number of ways of choosing R in the 8 blanks which is nothing but 8C6 or 8C2 = 28 
+*/
