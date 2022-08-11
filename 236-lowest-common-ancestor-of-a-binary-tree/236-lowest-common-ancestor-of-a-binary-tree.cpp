@@ -12,25 +12,21 @@
 
 class Solution {
 public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(root==NULL ||root ==p || root==q){
-            return root;
-        }
-         
-            TreeNode* left=lowestCommonAncestor(root->left,p,q);//left mara 
-            TreeNode* right=lowestCommonAncestor(root->right,p,q);//right mara
+            
+            
+            
+            
+             TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        //base case
+        if (root == NULL || root == p || root == q)  return root;
         
-            if(right==NULL){//right nhi to left hi shi
-                return left;
-                
-            }
-    else if(left==NULL){//left nhi toright hi shi
-        return right;
-    }
-        
-    else{
-     return root;//nhi to yhi h wo bnda jo bolega mere under h dono
-    }
-    }
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
+        TreeNode* right = lowestCommonAncestor(root->right, p, q);
 
+        //result
+        if(left == NULL) return right;
+        else if(right == NULL) return left;
+        //both left and right are not null, we found our result
+        else return root;
+    }
 };
