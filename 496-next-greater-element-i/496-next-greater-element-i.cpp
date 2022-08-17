@@ -1,46 +1,39 @@
 class Solution {
 public:
-//     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-//      vector<int> res;
-// 	  stack<int> s;
-// 	  for(int i=n-1;i>=0;i++){
-// 	      if(s.size()==0){
-// 	          res.push_back(-1);
-// 	      }
-// 	      else if(s.size()>0&&s.top()>arr[i]){
-// 	          res.push_back(s.top());
-	          
-// 	      }
-// 	      else if(s.size()>0&&s.top()<arr[i]){
-// 	          while(s.size()>0&&s.top()<arr[i]){
-// 	              s.pop();
-// 	          }
-// 	          if(s.size()==0){
-// 	              res.push_back(-1);
-// 	          }
-// 	          else{
-// 	              res.push_back(s.top());
-// 	          }
-// 	      }
-// 	      s.push(arr[i]);
-// 	  }
-// 	  return res;
-	     
-// 	  // code here
-// 	}   
-     vector<int> nextGreaterElement(vector<int>& findNums, vector<int>& nums) {
+    
+    ///Approach find nge for nums2 storee= it in hash then for nums 2 check corresponding key for corresponding val
+    //for hash --key-ele and val==ngeele
+    
+    vector<int> nextLargerElement(vector<int> arr, int n){
+        // Your code here
         stack<int> s;
-        unordered_map<int, int> m;
-        for (int n : nums) {
-            while (s.size() && s.top() < n) {
-                m[s.top()] = n;
+        s.push(arr[n-1]);
+        vector<int> a(n);
+        a[n-1]=-1;
+        for(int i=n-2;i>=0;i--){
+            while(s.size()>0&&arr[i]>s.top()){
                 s.pop();
             }
-            s.push(n);
+            if(s.size()==0)a[i]=-1;
+            else{
+                a[i]=s.top();
+            }
+            s.push(arr[i]);
         }
-        vector<int> ans;
-        for (int n : findNums) ans.push_back(m.count(n) ? m[n] : -1);
-        return ans;
-    
+        return a;
+    }
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+     vector<int> nge=nextLargerElement(nums2,nums2.size());
+    int i=0;
+        map<int,int> m;
+       for(int e:nums2){
+           m[e]=nge[i];
+           i++;
+       } 
+       vector<int> ans(nums1.size()); 
+        for(int i=0;i<nums1.size();i++){
+            ans[i]=m[nums1[i]];
+        }
+    return ans;
     }
 };
