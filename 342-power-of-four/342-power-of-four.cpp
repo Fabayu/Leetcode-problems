@@ -1,9 +1,18 @@
+
+
+
 class Solution {
 public:
-    bool isPowerOfFour(int my_num) {
-        
-        //bit and the manipulate reversely and check conditions
-          return my_num > 0 && (my_num & (my_num - 1)) == 0 && (my_num - 1) % 3 == 0;
-  
+bool isPowerOfFour(int n) {
+        if(n==0){
+            return false;
+        }
+        if(n==1){
+            return true;
+        }
+        if(n%4!=0){
+            return false;
+        }
+        return isPowerOfFour(n/4);
     }
 };
