@@ -3,7 +3,11 @@
 // //Approach :
 // -->>Case of unbounded knapsack with like of subset problem
 // --->>steps::
-// 1.Initialise dp array 
+// 1.Initialise dp array with changing values [[[amount and size is changing ]]] 
+// 2.Initialise upper box with all 0 if i==0 and then 1 if j==0
+//     3.again a for loop then check condition then get maximum ways 
+//     Note:: Whenever maximum ways is asked change to "+" 
+//         4.Note this is problem of unbounded knapsack//
 
 
 
