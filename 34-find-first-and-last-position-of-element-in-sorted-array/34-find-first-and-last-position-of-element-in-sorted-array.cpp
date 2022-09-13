@@ -1,28 +1,34 @@
 class Solution {
 public:
-    vector<int> searchRange(vector<int>& nums, int target) {
-        vector<int> v;
-        vector<int> vi;
-      for(int i=0;i<nums.size();i++){
-          if(nums[i]==target){
-              v.push_back(i);
-              break;
-          }
-      }
-          for(int i=nums.size()-1;i>=0;i--){
-              if(nums[i]==target){
-                  v.push_back(i);
-                  break;
-              }
-          }
-        
-   if(v.empty()){
-       vi.push_back(-1);
-       vi.push_back(-1);
-       return vi;
-   }
-        else{
-          return v;  
+    vector<int> searchRange(vector<int>& n, int t) {
+        if(n.size()==0){
+            return {-1,-1};
         }
+        vector<int> v;
+        
+        for(int i=0;i<n.size();i++){
+            if(n[i]==t){
+            
+                v.push_back(i);
+                
+                break;
+            }
+        }
+        
+        for(int i=n.size()-1;i>=0;i--){
+            if(n[i]==t){
+                
+                
+                v.push_back(i);
+                break;
+            }
+        }
+        if(v.size()==0){
+            return {-1,-1};
+        }
+        else{
+            return v;
+        }
+        
     }
 };
