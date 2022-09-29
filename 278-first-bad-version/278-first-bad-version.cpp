@@ -18,6 +18,6 @@ public:
             }
             
         }
-        return low;
+        return low;//since there will alway be a bad version
     }
 };
