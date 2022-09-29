@@ -1,7 +1,16 @@
 class Solution {
 public:
     char nextGreatestLetter(vector<char>& letters, char target) {
-      auto it = upper_bound(letters.begin(), letters.end(), target);
-        return it == letters.end() ? letters[0] : *it;   
+     int low = 0;
+        int high = letters.size()-1;
+        while(low < high){
+            int mid = low + (high - low)/2;
+            if(letters[mid] <= target){
+                low = mid+1;
+            }else{
+                high = mid;
+            }
+        }
+        return letters[low] > target ? letters[low] : letters[0]; 
     }
 };
