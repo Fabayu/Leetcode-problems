@@ -5,11 +5,11 @@ public:
         int r=arr.size();
         while(l<r){
             int m=l+(r-l)/2;
-            if(arr[m]-1-m<k){
-                l=m+1;
+            if(arr[m]-(m+1)>=k){
+                r=m;
             }
             else{
-               r=m; 
+               l=m+1; 
             }
         }
         return l+k;
