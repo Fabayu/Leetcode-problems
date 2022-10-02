@@ -1,14 +1,15 @@
 class MyHashSet {
 public:
-    vector<int> m;
-    int size;
+    vector<int>m;
+    int s;
     MyHashSet() {
-       size=1e6+1;
-        m.resize(size);
+     s=1e6+1;
+       m.resize(s);
+        
     }
     
     void add(int key) {
-        m[key]=1;
+       m[key]=1; 
     }
     
     void remove(int key) {
