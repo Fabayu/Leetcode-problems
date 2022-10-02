@@ -10,23 +10,21 @@
  */
 // 
 class Solution {
+    //single iteartion
 public:
 ListNode* middleNode(ListNode* head) {
-ListNode* temp=head;
-    ListNode* temp2=head;
-    int cnt=0;
-    while(temp!=NULL){
-        cnt++;
-        temp=temp->next;
+ListNode* slow=head;
+    ListNode* fast=head;
+    while(fast!=NULL&&fast->next!=NULL){
+        fast=fast->next->next;
+        slow=slow->next;
+        
     }
+    return slow;
     
-    int len=cnt/2;
-    while(len!=0){
-        temp2=temp2->next;
-        len--;
-    }
-    head=temp2;
-    return head;
 }
 };
 
+
+
+//double iteration
