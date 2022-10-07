@@ -12,20 +12,24 @@
 class Solution {
 public:
     
-    void helper(TreeNode* root,vector<int> &ans){
-        if(root==NULL){
-            return ;
-            
+  
+vector<int> inorderTraversal(TreeNode* root) {
+   stack<TreeNode*> s;
+    vector<int> ans;
+    
+    while(root||!s.empty()){
+        if(root!=NULL){
+            s.push(root);
+            root=root->left;
         }
-        helper(root->left,ans);
-        ans.push_back(root->val);
-        helper(root->right,ans);
+        else{
+            root=s.top();
+            s.pop();
+            ans.push_back(root->val);
+            root=root->right;
+        }
         
     }
-vector<int> inorderTraversal(TreeNode* root) {
-    vector<int> ans;
-    if(root==NULL) return ans ;
-    helper(root,ans);
     return ans;
 }
 };
@@ -63,4 +67,8 @@ vector<int> inorderTraversal(TreeNode* root) {
 //      }
 //  }
 //  return res;
+
+
+
+//INORDER RECURSIVE
  
