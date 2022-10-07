@@ -14,23 +14,27 @@ public:
     
   
 vector<int> inorderTraversal(TreeNode* root) {
-   stack<TreeNode*> s;
+stack<TreeNode*> s;
     vector<int> ans;
-    
-    while(root||!s.empty()){
+    if(root==NULL)return ans;
+    while(root||!s.empty())
+
+    {
         if(root!=NULL){
             s.push(root);
             root=root->left;
+            
         }
         else{
             root=s.top();
             s.pop();
             ans.push_back(root->val);
             root=root->right;
+            
         }
-        
-    }
+    }    
     return ans;
+    
 }
 };
 
@@ -68,6 +72,33 @@ vector<int> inorderTraversal(TreeNode* root) {
 //  }
 //  return res;
 
+
+
+
+// class Solution {
+// public:
+    
+  
+// vector<int> inorderTraversal(TreeNode* root) {
+//    stack<TreeNode*> s;
+//     vector<int> ans;
+    
+//     while(root||!s.empty()){
+//         if(root!=NULL){
+//             s.push(root);
+//             root=root->left;
+//         }
+//         else{
+//             root=s.top();
+//             s.pop();
+//             ans.push_back(root->val);
+//             root=root->right;
+//         }
+        
+//     }
+//     return ans;
+// }
+// };
 
 
 //INORDER RECURSIVE
