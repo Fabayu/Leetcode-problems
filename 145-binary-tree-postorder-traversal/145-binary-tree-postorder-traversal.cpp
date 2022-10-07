@@ -9,26 +9,21 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+//Recursive 
 class Solution {
 public:
+    void helper(vector<int> &ans,TreeNode* root){
+        if(root==NULL)return ;
+        helper(ans,root->left);
+        helper(ans,root->right);
+        ans.push_back(root->val);
+        
+    }
     vector<int> postorderTraversal(TreeNode* root) {
-                vector<int> ans;
-        solve(root,ans);
+        vector<int> ans;
+        helper(ans,root);
         return ans;
     }
-public:
-    void solve(TreeNode* root , vector<int>& ans){
-        //BASE CASE
-        if(!root){
-            return;
-        }
-        //LEFT
-        solve(root->left,ans);
-        //RIGHT
-        solve(root->right,ans);
-        //NODE
-        ans.push_back(root->val);
-    }
-
-    
 };
