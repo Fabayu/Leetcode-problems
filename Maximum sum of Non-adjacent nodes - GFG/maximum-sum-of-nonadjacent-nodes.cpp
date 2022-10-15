@@ -128,13 +128,14 @@ if(root->left){
         
      }   
      
-     
-     
-         int winode=getMaxSum(root->left)+ getMaxSum(root->right);
+     int winode=0;
+     if(root->left){
+         winode+=getMaxSum(root->left);
          
-     
-        
-     
+     }
+     if(root->right){
+         winode+=getMaxSum(root->right);
+     }
         
        m[root]=max(winode,withnode);
        return m[root];
