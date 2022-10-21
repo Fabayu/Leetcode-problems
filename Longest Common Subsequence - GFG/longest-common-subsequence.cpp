@@ -9,57 +9,83 @@ using namespace std;
 class Solution
 {
     public:
-    //Function to find the length of longest common subsequence in two strings.
-    int lcs(int m, int n, string t1, string t2)
-    {
-         int dp[m+1][n+1];
-        
-       for(int i=0;i<m+1;i++){
-           for(int j=0;j<n+1;j++){
-               if(i==0||j==0){
-                   dp[i][j]=0;
-               }
-           }
-       }
-               for(int i=1;i<m+1;i++){
-           for(int j=1;j<n+1;j++){
-      
-        if(t1[i-1]==t2[j-1]){
-dp[i][j]=1+dp[i-1][j-1];
-            
-            
-            
-            
-            
-            
-            
-            
-            
+     int t[1001][1001];
+    int lcsi(int m,int n,string t1,string t2){
+             if(m==0||n==0){        
+            return 0;
         }
-               
-               
-               
-        else{
-          dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
-           }}}
-        return dp[m][n];
-    }  
-        
+   if(t[m][n]!=-1){
+       return t[m][n];
+   }
+    if(t1[m-1]==t2[n-1]){
+        return t[m][n]=1+lcsi(m-1,n-1,t1,t2);
+    }
+    else{
+       return  t[m][n]= max(lcsi(m-1,n,t1,t2),lcsi(m,n-1,t1,t2));
+    }
     
-    
-    
-    
-    
-   
-        
+}
+    int lcs(int m, int n, string t1, string t2){
+    memset(t,-1,sizeof(t));
+    return lcsi(m,n,t1,t2);
+}
 
-    
-    
-    
-        
-   
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //Memoized
+
+// class Solution
+// {
+//     public:
+//      int t[1001][1001];
+//     int lcsi(int m,int n,string t1,string t2){
+//              if(m==0||n==0){        
+//             return 0;
+//         }
+//   if(t[m][n]!=-1){
+//       return t[m][n];
+//   }
+//     if(t1[m-1]==t2[n-1]){
+//         return t[m][n]=1+lcsi(m-1,n-1,t1,t2);
+//     }
+//     else{
+//       return  t[m][n]= max(lcsi(m-1,n,t1,t2),lcsi(m,n-1,t1,t2));
+//     }
+    
+// }
+//     int lcs(int m, int n, string t1, string t2){
+//     memset(t,-1,sizeof(t));
+//     return lcsi(m,n,t1,t2);
+// }
+// };
 
 //{ Driver Code Starts.
 int main()
