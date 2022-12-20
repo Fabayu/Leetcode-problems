@@ -13,27 +13,44 @@ public:
 	
 	//set 
 	bool hasArrayTwoCandidates(int arr[], int n, int x) {
-	   sort(arr,arr+n);
-	   int s=0;
-	   int e=n-1;
-	   while(s<e){
-	       if(arr[s]+arr[e]==x){
-	           return true;
-	       }
-	       else if(arr[s]+arr[e]<x){
-	           s++;
-	       }
-	       else{
-	           e--;
-	           
-	       }
-	   }
+	   
+	  map<int,int> mp;
+	  for(int i=0;i<n;i++){
+	      
+	      if(mp.find(x-arr[i])!=mp.end()){
+	          
+	          return true;
+	          
+	      }
+	      else{
+	          mp[arr[i]]++;
+	          
+	      }
+	  }
 	   return false;
+	   
 	}
 };
 
 
-
+//bs
+// sort(arr,arr+n);
+// 	   int s=0;
+// 	   int e=n-1;
+// 	   while(s<e){
+// 	       if(arr[s]+arr[e]==x){
+// 	           return true;
+// 	       }
+// 	       else if(arr[s]+arr[e]<x){
+// 	           s++;
+// 	       }
+// 	       else{
+// 	           e--;
+	           
+// 	       }
+// 	   }
+// 	   return false;
+// 	}
 
 //set
 //  unordered_set<int> s;
