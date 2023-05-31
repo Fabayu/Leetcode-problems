@@ -15,9 +15,9 @@ public:
         int maxi=arr[0];
         
         for(int i=1;i<n;i++){
-            if(arr[i]>arr[i-1]){
+            
                 maxi=max(maxi,arr[i]);
-            }
+            
         }
         return maxi;
         
